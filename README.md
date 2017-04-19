@@ -1,8 +1,21 @@
+# Sillytwit
+## Filter through silly funny twitter reviews
+
+#### Instructions:
+
+1. Clone the Repo: [https://github.com/justinhessdev/sillytwit](https://github.com/justinhessdev/sillytwit "Sillytwit")
+
+2. Locate project in terminal and run:
+		
+		npm run dev
+		
+Now Sillytwit is up and running live on **localhost:8080**
+
+Check it out!		
+	
+-
+
 ###### Webpack - module loader of choice for React community
-
-###### Other module loaders: browserify, require.js
-
-###### lodash is bascially underscore js
 
 -
 
