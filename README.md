@@ -19,3 +19,7 @@
 ##### gives us live reload and now our app is running on:  
 
 	localhost:8080
+	
+##### Appfigures account: Justinhessdev@gmail.com 
+##### Client Key: e6be4344104e4d6f95d5cfb3fa23a32f
+
