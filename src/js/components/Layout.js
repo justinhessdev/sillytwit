@@ -4,9 +4,18 @@ import Keyword from "./Keyword"
 import Rating from "./Rating"
 
 export default class Layout extends React.Component {
+
+/*
+Constructor for Layout component. Doesn't do much now
+*/
   constructor() {
     super()
   }
+
+/*
+Renders Keyword ad Rating components so far
+Bootstrap design
+*/
   render() {
     return (
       <div id="layout">
