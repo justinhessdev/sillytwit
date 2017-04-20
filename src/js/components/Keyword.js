@@ -13,8 +13,13 @@ Constructor for keyword component. Doesn't do much now
 Rendering keyword Component. Doesn't do much now
 */
   render() {
+
+    const divStyle = {
+      marginLeft: '20px'
+    }
+
     return (
-      <div>
+      <div style={divStyle} id="componentKeyword">
         <h6>Filter by keyword</h6>
         <label className="sr-only" htmlFor="inputKeyword">keyword</label>
         <input className="form-control" id="inputKeyword" type='text' ref='newKeyword' placeholder="enter keyword"/>

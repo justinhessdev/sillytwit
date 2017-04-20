@@ -2,6 +2,7 @@ import React from "react"
 
 import Keyword from "./Keyword"
 import Rating from "./Rating"
+import ReviewList from "./ReviewList"
 
 export default class Layout extends React.Component {
 
@@ -18,13 +19,18 @@ Bootstrap design
 */
   render() {
     return (
-      <div id="layout">
+      <div id="componentLayout">
         <div className="row">
-          <div className="col-xs-9">
+          <div className="col-xs-8">
             <Keyword />
           </div>
-          <div className="col-xs-3">
+          <div className="col-xs-2">
             <Rating />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-xs-10">
+            <ReviewList />
           </div>
         </div>
       </div>

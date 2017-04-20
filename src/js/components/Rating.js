@@ -29,14 +29,21 @@ change event handler, and a few ratings options
 */
   render() {
     return (
-      <div>
+      <div id="componentRating">
         <h6>Filter by rating</h6>
-        <label className="sr-only" htmlFor="selectRating">Send custom context</label>
-        <select id="selectRating" value={this.state.value} onChange={this.handleChange.bind(this)}>
-          <option value="blank" ></option>
-          <option value="food">I want food</option>
-          <option value="work">I want work</option>
-        </select>
+        <form>
+          <div className="form-group">
+            <label className="sr-only" for="selectRating">Select Rating:</label>
+            <select className="form-control" id="selectRating">
+              <option>All</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+            </select>
+          </div>
+        </form>
       </div>
     )
   }

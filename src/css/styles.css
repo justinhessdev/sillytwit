@@ -1,0 +1,7 @@
+/*
+Making h6 headers bold
+Used in Rating and Keyword components
+ */
+h6 {
+  font-weight: bold;
+}
