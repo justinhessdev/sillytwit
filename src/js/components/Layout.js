@@ -14,6 +14,26 @@ Constructor for Layout component. Doesn't do much now
   }
 
 /*
+When component mounts we fetch the twitter reviews using the Appfigures API --
+loading by default the first 25 reviews
+*/
+  componentWillMount() {
+      var self = this
+      const fetchReviews = fetch('http://exercises.appfigures.com/reviews', {credentials: 'same-origin'})
+
+      function loadMyReviews(data) {
+        data.json().then((jsonData) => {
+          console.log("The reviews are: ")
+          console.log(jsonData)
+          // self.setReviews(jsonData)
+        })
+      }
+
+      fetchReviews.then(loadMyReviews)
+    }
+
+
+/*
 Renders Keyword ad Rating components so far
 Bootstrap design
 */
