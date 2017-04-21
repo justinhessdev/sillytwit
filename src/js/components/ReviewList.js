@@ -40,7 +40,7 @@ export default class ReviewList extends React.Component {
         restartCount=false
         count = 0
         timeline = 'Yesterday'
-      } else if(currentDayOfMonth > testDayOfMonth+1 && currentDayOfWeek > testDayOfWeek && !restartCount) {
+      } else if(currentDayOfMonth > testDayOfMonth+1 && currentDayOfWeek - testDayOfWeek < 6 && !restartCount) {
         restartCount=true
         count = 0
         timeline = 'This week'
@@ -53,12 +53,12 @@ export default class ReviewList extends React.Component {
         isDisplay='hide'
       }
 
-      console.log("Test");
-      console.log("testDayOfMonth is "+testDayOfMonth);
-      console.log("currentDayOfMonth is "+currentDayOfMonth);
-      console.log("testDayOfWeek is "+testDayOfWeek);
-      console.log("currentDayOfWeek is "+currentDayOfWeek);
-      console.log("count is "+count);
+      // console.log("Test");
+      // console.log("testDayOfMonth is "+testDayOfMonth);
+      // console.log("currentDayOfMonth is "+currentDayOfMonth);
+      // console.log("testDayOfWeek is "+testDayOfWeek);
+      // console.log("currentDayOfWeek is "+currentDayOfWeek);
+      // console.log("count is "+count);
 
         return (
           <div key={review.id}>

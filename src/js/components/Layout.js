@@ -4,6 +4,7 @@ import Keyword from "./Keyword"
 import Rating from "./Rating"
 import ReviewList from "./ReviewList"
 import Total from "./Total"
+import LoadMore from "./LoadMore"
 
 export default class Layout extends React.Component {
 
@@ -46,10 +47,19 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
         reviewArr.push(r)
       })
 
+      // console.log("New reviewArr is: ");
+      // console.log(reviewArr);
+      //
+      // console.log("current reviews are: ")
+      // console.log(this.state.reviews)
+
       this.setState({
-        reviews: reviewArr,
+        reviews: this.state.reviews.concat(reviewArr),
         total: data.total
       })
+
+      console.log("After merging arrays, new review array is: ")
+      console.log(this.state.reviews)
 
     }
 
@@ -73,6 +83,11 @@ Bootstrap design
           <div className="col-xs-10">
             <Total total={this.state.total}/>
             <ReviewList reviews={this.state.reviews}/>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-xs-10">
+            <LoadMore setReviews={this.setReviews.bind(this)} />
           </div>
         </div>
       </div>
