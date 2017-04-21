@@ -5,3 +5,15 @@ Used in Rating and Keyword components
 h6 {
   font-weight: bold;
 }
+
+.bold {
+  font-weight: bold;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}

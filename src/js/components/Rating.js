@@ -33,7 +33,7 @@ change event handler, and a few ratings options
         <h6>Filter by rating</h6>
         <form>
           <div className="form-group">
-            <label className="sr-only" for="selectRating">Select Rating:</label>
+            <label className="sr-only" htmlFor="selectRating">Select Rating:</label>
             <select className="form-control" id="selectRating">
               <option>All</option>
               <option>5</option>

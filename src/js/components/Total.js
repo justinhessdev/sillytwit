@@ -5,10 +5,17 @@ export default class Total extends React.Component {
     super()
   }
 
+
   render() {
+    const total = this.props.total
+
+    const divStyle = {
+      marginLeft: '20px'
+    }
+
     return (
-      <div id="componentTotal">
-        <label>Showing ### Reviews</label>
+      <div style={divStyle} id="componentTotal">
+        <label>Showing {total} Reviews</label>
       </div>
     )
   }

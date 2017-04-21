@@ -3,6 +3,7 @@ import React from "react"
 import Keyword from "./Keyword"
 import Rating from "./Rating"
 import ReviewList from "./ReviewList"
+import Total from "./Total"
 
 export default class Layout extends React.Component {
 
@@ -11,25 +12,45 @@ Constructor for Layout component. Doesn't do much now
 */
   constructor() {
     super()
+    this.state = {
+      reviews: [],
+      total: 0
+    }
   }
 
 /*
 When component mounts we fetch the twitter reviews using the Appfigures API --
 loading by default the first 25 reviews
+
+process.env.REACT_APP_APPFIGURES_URL --- hiding the url
 */
   componentWillMount() {
+
       var self = this
-      const fetchReviews = fetch('http://exercises.appfigures.com/reviews', {credentials: 'same-origin'})
+      const fetchReviews = fetch(process.env.REACT_APP_APPFIGURES_URL, {credentials: 'same-origin'})
 
       function loadMyReviews(data) {
         data.json().then((jsonData) => {
-          console.log("The reviews are: ")
-          console.log(jsonData)
-          // self.setReviews(jsonData)
+          self.setReviews(jsonData)
         })
       }
 
       fetchReviews.then(loadMyReviews)
+    }
+
+    setReviews(data) {
+      console.log("data received from URL is: ");
+      console.log(data);
+      var reviewArr = []
+      data.reviews.map((r) => {
+        reviewArr.push(r)
+      })
+
+      this.setState({
+        reviews: reviewArr,
+        total: data.total
+      })
+
     }
 
 
@@ -50,7 +71,8 @@ Bootstrap design
         </div>
         <div className="row">
           <div className="col-xs-10">
-            <ReviewList />
+            <Total total={this.state.total}/>
+            <ReviewList reviews={this.state.reviews}/>
           </div>
         </div>
       </div>
