@@ -5,7 +5,11 @@
 
 1. Clone the Repo: [https://github.com/justinhessdev/sillytwit](https://github.com/justinhessdev/sillytwit "Sillytwit")
 
-2. Locate project in terminal and run:
+2. Install Dependencies: 
+
+		npm install
+
+3. Locate project in terminal and run:
 		
 		npm run dev
 		
@@ -41,11 +45,10 @@ The app, as shown above, is comprised of **React** components:
 2. Rating Component
 3. ReviewList Component
 4. Total Component
-5. Layout Component
+5. LoadMore Component -- for pagination - load more pages
+6. Layout Component
 
--- Total Component is rendered within the ReviewList Component
-
--- Layout Component renders all other components
+-- Layout Component renders all components
 
 In my **client.js** I render my Layout component to the DOM:
 	
@@ -56,9 +59,5 @@ and **app** is the main element located in **index.html** where all the **React*
 
 	<div id="app"></div>
 	
-**Random account info:**
 	
-###### Appfigures account: Justinhessdev@gmail.com
- 
-###### Client Key: e6be4344104e4d6f95d5cfb3fa23a32f
 
