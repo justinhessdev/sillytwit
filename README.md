@@ -11,7 +11,7 @@
 
 3. Locate project in terminal and run:
 		
-		npm run dev
+		npm run build-dev
 		
 Now Sillytwit is up and running live on **localhost:8080**
 
@@ -23,13 +23,13 @@ ________________________
 
 The command 
 	
-	npm run dev
+	npm run build-dev
 	
 works with live reload by webpack dev server on **localhost:8080** because:	
 
 ##### In package.json we add the following script: 
 
-	"dev": "webpack-dev-server --content-base src --inline --hot"
+	"dev": "webpack-dev-server --content-base src --inline --hot ... ..."
 	
 ________________________
 
