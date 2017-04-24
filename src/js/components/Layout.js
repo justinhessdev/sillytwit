@@ -11,12 +11,18 @@ export default class Layout extends React.Component {
 /*
 Constructor for Layout component. Doesn't do much now
 */
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
+    console.log("In Layout - props is");
+    console.log(props);
     this.state = {
       reviews: [],
-      total: 0
+      total: 0,
+      pages: 1
     }
+
+    this.setReviews = this.setReviews.bind(this);
+    this.handleLoadMore = this.handleLoadMore.bind(this);
   }
 
 /*
@@ -64,6 +70,24 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
 
     }
 
+    handleLoadMore() {
+      var self = this
+
+      this.setState({ pages: this.state.pages+1 }, () => {
+        var url = process.env.REACT_APP_APPFIGURES_URL+'?page='+this.state.pages
+        const fetchReviews = fetch(url, {credentials: 'same-origin'})
+
+        function loadMyReviews(data) {
+          data.json().then((jsonData) => {
+            console.log("Sending the jsonData to props in Layout");
+            self.setReviews(jsonData)
+          })
+        }
+
+        fetchReviews.then(loadMyReviews)
+      });
+    }
+
 
 /*
 Renders Keyword ad Rating components so far
@@ -88,7 +112,7 @@ Bootstrap design
         </div>
         <div className="row">
           <div className="col-xs-10">
-            <LoadMore setReviews={this.setReviews.bind(this)} />
+            <LoadMore handleLoadMore={this.handleLoadMore} peach="fuzz"/>
           </div>
         </div>
       </div>
