@@ -27,6 +27,7 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
 */
   componentWillMount() {
 
+    console.log("in componentWillMount from the Layout");
       var self = this
       const fetchReviews = fetch(process.env.REACT_APP_APPFIGURES_URL, {credentials: 'same-origin'})
 
