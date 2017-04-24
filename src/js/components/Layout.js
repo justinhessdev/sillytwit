@@ -1,95 +1,147 @@
 import React from "react"
 
-import Keyword from "./Keyword"
-import Rating from "./Rating"
 import ReviewList from "./ReviewList"
-import Total from "./Total"
-import LoadMore from "./LoadMore"
 
 export default class Layout extends React.Component {
 
-/*
-Constructor for Layout component. Doesn't do much now
-*/
   constructor() {
     super()
     this.state = {
-      reviews: [],
-      total: 0
-    }
-  }
+      messages: [
+            {
+                id: "1",
+                body: "Today 1",
+                date: "2017-04-23T19:25:50",
 
-/*
-When component mounts we fetch the twitter reviews using the Appfigures API --
-loading by default the first 25 reviews
+            },
+            {
+                id: "2",
+                body: "Today 2",
+                date: "2017-04-23T13:20:53",
 
-process.env.REACT_APP_APPFIGURES_URL --- hiding the url
-*/
-  componentWillMount() {
+            },
+            {
+                id: "3",
+                body: "Today 3",
+                date: "2017-04-23T10:25:40",
 
-      var self = this
-      const fetchReviews = fetch(process.env.REACT_APP_APPFIGURES_URL, {credentials: 'same-origin'})
+            },
+            {
+                id: "4",
+                body: "Today 4",
+                date: "2017-04-23T05:15:32",
 
-      function loadMyReviews(data) {
-        data.json().then((jsonData) => {
-          self.setReviews(jsonData)
-        })
+            },
+            {
+                id: "14",
+                body: "Yesterday 14",
+                date: "2017-04-22T09:25:50",
+
+            },
+            {
+                id: "104",
+                body: "Yesterday 104",
+                date: "2017-04-22T09:15:50",
+
+            },
+            {
+                id: "110",
+                body: "Yesterday 110",
+                date: "2017-04-22T09:15:50",
+
+            },
+            {
+                id: "150",
+                body: "Yesterday 150",
+                date: "2017-04-22T09:15:50",
+
+            },
+            {
+                id: "160",
+                body: "This Month 160",
+                date: "2017-04-10T09:15:50",
+
+            },
+            {
+                id: "170",
+                body: "This Month 170",
+                date: "2017-04-10T08:15:50",
+
+            },
+            {
+                id: "180",
+                body: "This Month 180",
+                date: "2017-04-05T09:15:50",
+
+            },
+            {
+                id: "210",
+                body: "Last Month 210",
+                date: "2017-03-21T04:31:22",
+
+            },
+            {
+                id: "250",
+                body: "Last Month 250",
+                date: "2017-03-21T03:08:31",
+
+            },
+            {
+                id: "280",
+                body: "Previous Month 280",
+                date: "2017-02-18T01:10:32",
+
+            },
+            {
+                id: "620",
+                body: "Previous Month 620",
+                date: "2017-02-27T04:18:40",
+
+            },
+            {
+                id: "730",
+                body: "Previous Month 630",
+                date: "2017-02-27T04:18:40",
+
+            },
+            {
+                id: "740",
+                body: "Another Previous Month 740",
+                date: "2017-01-27T04:18:40",
+
+            },
+            {
+                id: "750",
+                body: "Another Previous Month 750",
+                date: "2017-01-27T04:18:40",
+
+            },
+            {
+                id: "770",
+                body: "Month 12 2k16 770",
+                date: "2016-12-27T03:18:40",
+
+            },
+            {
+                id: "790",
+                body: "Month 10 2k16 790",
+                date: "2016-10-27T04:18:40",
+
+            },
+            {
+                id: "850",
+                body: "Month 10 2k16 850",
+                date: "2016-10-23T04:18:40",
+
+            }
+        ]
       }
-
-      fetchReviews.then(loadMyReviews)
     }
 
-    setReviews(data) {
-      console.log("data received from URL is: ");
-      console.log(data);
-      var reviewArr = []
-      data.reviews.map((r) => {
-        reviewArr.push(r)
-      })
-
-      // console.log("New reviewArr is: ");
-      // console.log(reviewArr);
-      //
-      // console.log("current reviews are: ")
-      // console.log(this.state.reviews)
-
-      this.setState({
-        reviews: this.state.reviews.concat(reviewArr),
-        total: data.total
-      })
-
-      console.log("After merging arrays, new review array is: ")
-      console.log(this.state.reviews)
-
-    }
-
-
-/*
-Renders Keyword ad Rating components so far
-Bootstrap design
-*/
   render() {
     return (
       <div id="componentLayout">
-        <div className="row">
-          <div className="col-xs-8">
-            <Keyword />
-          </div>
-          <div className="col-xs-2">
-            <Rating />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-xs-10">
-            <Total total={this.state.total}/>
-            <ReviewList reviews={this.state.reviews}/>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-xs-10">
-            <LoadMore setReviews={this.setReviews.bind(this)} />
-          </div>
-        </div>
+        <ReviewList messages={this.state.messages}/>
       </div>
     )
   }
