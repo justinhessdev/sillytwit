@@ -5,13 +5,10 @@ export default class Keyword extends React.Component{
 /*
 Constructor for keyword component. Doesn't do much now
 */
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
   }
 
-/*
-Rendering keyword Component. Doesn't do much now
-*/
   render() {
 
     const divStyle = {
@@ -22,7 +19,7 @@ Rendering keyword Component. Doesn't do much now
       <div style={divStyle} id="componentKeyword">
         <h6>Filter by keyword</h6>
         <label className="sr-only" htmlFor="inputKeyword">keyword</label>
-        <input className="form-control" id="inputKeyword" type='text' ref='newKeyword' placeholder="enter keyword"/>
+        <input className="form-control" id="inputKeyword" type='text' onBlur={this.props.onBlur} ref='newKeyword' placeholder="enter keyword"/>
       </div>
     )
   }

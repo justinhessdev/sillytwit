@@ -6,21 +6,8 @@ export default class Rating extends React.Component{
 Setting constructor with state for drop down list.
 Setting default to blank
 */
-  constructor() {
-    super()
-    this.state = {
-      value: 'blank'
-    }
-  }
-
-/*
-This is where onChange gets handled --
-When the user selects a different rating
-*/
-  handleChange(evt) {
-    this.setState(
-      {value: evt.target.value}
-    )
+  constructor(props) {
+    super(props)
   }
 
 /*
@@ -34,8 +21,8 @@ change event handler, and a few ratings options
         <form>
           <div className="form-group">
             <label className="sr-only" htmlFor="selectRating">Select Rating:</label>
-            <select className="form-control" id="selectRating">
-              <option>All</option>
+            <select className="form-control" value={this.props.rating} onChange={this.props.handleRating} id="selectRating">
+              <option></option>
               <option>5</option>
               <option>4</option>
               <option>3</option>

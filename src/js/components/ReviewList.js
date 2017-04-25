@@ -10,14 +10,14 @@ export default class ReviewList extends React.Component {
 
   componentWillReceiveProps(nextProps){
     console.log("in comopnentwillreceiveprops in reviewlist");
-    console.log(nextProps);
+    // console.log(nextProps);
     var currentDate = new Date()
     var currentMonth = currentDate.getMonth()+1
     var currentYear = currentDate.getFullYear()
     var currentDayofMonth = currentDate.getDate()
     var currentDayofWeek = currentDate.getDay()
-    console.log("current month is " + currentMonth, " current year is " + currentYear, "current day of month is " + currentDayofMonth, "current day of week is " + currentDayofWeek);
-    console.log(nextProps.reviews);
+    // console.log("current month is " + currentMonth, " current year is " + currentYear, "current day of month is " + currentDayofMonth, "current day of week is " + currentDayofWeek);
+    // console.log(nextProps.reviews);
     var reviewTypeList = {}
     nextProps.reviews.forEach((review, index) => {
        var date = review.date.substring(0, 10).replace(/-/g, '\/') // dates are stupid in JS so little trick from stack overflow
@@ -26,7 +26,7 @@ export default class ReviewList extends React.Component {
        var reviewYear = reviewDate.getFullYear();
        var reviewDayOfMonth = reviewDate.getDate();
        var reviewDayOfWeek = reviewDate.getDay();
-       console.log("review month is "+reviewMonth, "review year is " + reviewYear, "review day of month is " + reviewDayOfMonth, "review day of week is " + reviewDayOfWeek);
+      //  console.log("review month is "+reviewMonth, "review year is " + reviewYear, "review day of month is " + reviewDayOfMonth, "review day of week is " + reviewDayOfWeek);
 
        //TODAY
        if(currentDayofMonth == reviewDayOfMonth && currentMonth == reviewMonth && currentYear == reviewYear) {

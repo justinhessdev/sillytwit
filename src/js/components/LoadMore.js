@@ -3,8 +3,8 @@ import React from "react"
 export default class LoadMore extends React.Component {
   constructor(props) {
     super(props)
-    console.log("In LoadMore - props is")
-    console.log(props);
+    // console.log("In LoadMore - props is")
+    // console.log(props);
   }
 
   render() {
