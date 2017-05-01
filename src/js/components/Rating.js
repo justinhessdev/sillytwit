@@ -2,10 +2,6 @@ import React from "react";
 
 export default class Rating extends React.Component{
 
-/*
-Setting constructor with state for drop down list.
-Setting default to blank
-*/
   constructor(props) {
     super(props)
   }

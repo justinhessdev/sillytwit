@@ -8,13 +8,8 @@ import LoadMore from "./LoadMore"
 
 export default class Layout extends React.Component {
 
-/*
-Constructor for Layout component. Doesn't do much now
-*/
   constructor(props) {
     super(props)
-    // console.log("In Layout - props is");
-    // console.log(props);
     this.state = {
       reviews: [],
       total: 0,
@@ -38,7 +33,6 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
 */
   componentWillMount() {
 
-    // console.log("in componentWillMount from the Layout");
       var self = this
       const fetchReviews = fetch(this.state.url, {credentials: 'same-origin'})
 
@@ -52,45 +46,15 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
     }
 
     setReviews(data) {
-      // console.log("data received from URL is: ");
-      // console.log(data);
-      var reviewArr = []
-      data.reviews.map((r) => {
-        reviewArr.push(r)
-      })
-
-      // console.log("New reviewArr is: ");
-      // console.log(reviewArr);
-      //
-      // console.log("current reviews are: ")
-      // console.log(this.state.reviews)
-
       this.setState({
-        reviews: this.state.reviews.concat(reviewArr),
+        reviews: this.state.reviews.concat(data.reviews),
         total: data.total
       })
-
-      // console.log("After merging arrays, new review array is: ")
-      // console.log(this.state.reviews)
-
     }
 
     resetReviews(data) {
-      // console.log("data received from URL is: ");
-      // console.log(data);
-      var reviewArr = []
-      data.reviews.map((r) => {
-        reviewArr.push(r)
-      })
-
-      // console.log("New reviewArr is: ");
-      // console.log(reviewArr);
-      //
-      // console.log("current reviews are: ")
-      // console.log(this.state.reviews)
-
       this.setState({
-        reviews: reviewArr,
+        reviews: data.reviews,
         total: data.total
       })
     }
@@ -105,12 +69,10 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
       function loadPaginatedMessages() {
         var url = self.generateURL(self.state.url, self.state.pages, self.state.keyword, self.state.rating)
 
-        console.log("paginated url is " + url);
         const fetchReviews = fetch(url, {credentials: 'same-origin'})
 
         function loadMyReviews(data) {
           data.json().then((jsonData) => {
-            // console.log("Sending the jsonData to props in Layout");
             self.setReviews(jsonData)
           })
         }
@@ -134,14 +96,8 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
      return url
     }
 
-    // handleChange(event) {
-    //   console.log("in Layour - input field value is: ");
-    //     console.log(event.target.value);
-    // }
-
     onBlur(event) {
       var self = this
-      // console.log(event.target.value);
       var keyword = event.target.value
       this.setState({
         keyword: keyword,
@@ -156,7 +112,6 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
 
         function loadMyReviews(data) {
           data.json().then((jsonData) => {
-            // console.log("Sending the jsonData to props in Layout");
             self.resetReviews(jsonData)
           })
         }
@@ -174,14 +129,11 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
       }, ()=> updateURLWithRating())
 
       function updateURLWithRating() {
-        console.log("rating is "+self.state.value)
         var url = self.generateURL(self.state.url, self.state.pages, self.state.keyword, self.state.rating)
-        console.log("filtered url is: " + url);
         const fetchReviews = fetch(url, {credentials: 'same-origin'})
 
         function loadMyReviews(data) {
           data.json().then((jsonData) => {
-            // console.log("Sending the jsonData to props in Layout");
             self.resetReviews(jsonData)
           })
         }

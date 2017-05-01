@@ -2,9 +2,6 @@ import React from "react";
 
 export default class Keyword extends React.Component{
 
-/*
-Constructor for keyword component. Doesn't do much now
-*/
   constructor(props) {
     super(props)
   }

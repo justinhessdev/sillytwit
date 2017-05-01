@@ -11,7 +11,7 @@ export default class ReviewList extends React.Component {
   componentWillReceiveProps(nextProps){
     console.log("in comopnentwillreceiveprops in reviewlist");
     // console.log(nextProps);
-    var currentDate = new Date()
+    var currentDate = new Date("04/30/2017")
     var currentMonth = currentDate.getMonth()+1
     var currentYear = currentDate.getFullYear()
     var currentDayofMonth = currentDate.getDate()

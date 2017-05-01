@@ -24,7 +24,8 @@ module.exports = {
     plugins: [
       new webpack.EnvironmentPlugin([
         'NODE_ENV',
-        'REACT_APP_APPFIGURES_URL'
+        'REACT_APP_APPFIGURES_URL',
+        'MY_URL'
       ]),
       new Dotenv({
         path: './.env', // Path to .env file (this is the default)
