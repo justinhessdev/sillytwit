@@ -51,14 +51,12 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
     const keyword = event.target.value;
 
     function updateURLWithKeyword() {
-      // console.log("new keyword state is " + self.state.keyword);
       const url = self.generateURL(
         self.state.url,
         self.state.pages,
         self.state.keyword,
         self.state.rating,
       );
-      // console.log("filtered url is: " + url);
       const fetchReviews = fetch(url, { credentials: 'same-origin' });
 
       function loadMyReviews(data) {
@@ -107,7 +105,6 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
 
   handleLoadMore() {
     const self = this;
-    // console.log('handling rating');
     function loadPaginatedMessages() {
       const url = self.generateURL(
         self.state.url,
@@ -134,7 +131,6 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
   handleRating(evt) {
     const self = this;
     const rating = evt.target.value;
-    console.log('handle rating');
     function updateURLWithRating() {
       const url = self.generateURL(
         self.state.url,
@@ -142,7 +138,6 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
         self.state.keyword,
         self.state.rating,
       );
-      console.log("url is + " + url);
       const fetchReviews = fetch(url, { credentials: 'same-origin' });
 
       function loadMyReviews(data) {
