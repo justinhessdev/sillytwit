@@ -16,7 +16,7 @@ export default class Layout extends React.Component {
       pages: 1,
       url: process.env.REACT_APP_APPFIGURES_URL,
       keyword: '',
-      rating: '', // value of ratings drop down
+      rating: '',
     };
 
     this.setReviews = this.setReviews.bind(this);
@@ -52,7 +52,7 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
 
     function updateURLWithKeyword() {
       // console.log("new keyword state is " + self.state.keyword);
-      const url = this.generateURL(
+      const url = self.generateURL(
         self.state.url,
         self.state.pages,
         self.state.keyword,
@@ -88,7 +88,7 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
     if (keyword === '' && rating === '') {
       url = `${host}?page= ${pages}`;
     } else if (keyword === '') {
-      url = `${host}?page=${pages}&stars${rating}`;
+      url = `${host}?page=${pages}&stars=${rating}`;
     } else if (rating === '') {
       url = `${host}?page=${pages}&q=${keyword}`;
     } else {
@@ -107,7 +107,7 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
 
   handleLoadMore() {
     const self = this;
-
+    // console.log('handling rating');
     function loadPaginatedMessages() {
       const url = self.generateURL(
         self.state.url,
@@ -134,7 +134,7 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
   handleRating(evt) {
     const self = this;
     const rating = evt.target.value;
-
+    console.log('handle rating');
     function updateURLWithRating() {
       const url = self.generateURL(
         self.state.url,
@@ -142,6 +142,7 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
         self.state.keyword,
         self.state.rating,
       );
+      console.log("url is + " + url);
       const fetchReviews = fetch(url, { credentials: 'same-origin' });
 
       function loadMyReviews(data) {

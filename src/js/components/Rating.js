@@ -19,5 +19,5 @@ export default function Rating(props){
         </div>
       </form>
     </div>
-  )
+  );
 }

@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 
 export default function LoadMore(props) {
   const divStyle = {
     marginLeft: '20px',
     fontWeight: 'bold',
-    textAlign:  'center',
+    textAlign: 'center',
     background: '#dddddd',
-    border:     '1px solid black',
+    border: '1px solid black',
   };
 
   const buttonStyle = {
-    height:  '50px',
-    width:   '100%',
+    height: '50px',
+    width: '100%',
     display: 'block',
   };
 
