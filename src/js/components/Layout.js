@@ -35,6 +35,7 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
   /* global fetch*/
   componentWillMount() {
     const self = this;
+    console.log(process.env.REACT_APP_APPFIGURES_URL);
     const fetchReviews = fetch(this.state.url, { credentials: 'same-origin' });
 
     function loadMyReviews(data) {
