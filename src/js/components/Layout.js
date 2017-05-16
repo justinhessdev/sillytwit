@@ -85,73 +85,57 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
   }
 
   sortReviews() {
-    console.log("this is: ");
-    console.log(this);
-    const currentDate = new Date();
-    const currentMonth = currentDate.getMonth() + 1;
-    const currentYear = currentDate.getFullYear();
-    const currentDayofMonth = currentDate.getDate();
+    const currentDate = new Date('2017/05/11'); // Or leave out the argument for actual date
+    currentDate.setHours(0, 0, 0, 0); // set to midnight
+    // Prepare all related dates: yesterday and last Monday
+    const keys = [];
     const reviewTypeList = {};
-    console.log(this.state);
+    keys.push(['Today', new Date(currentDate)]); // clone
+    currentDate.setDate(currentDate.getDate() - 1);
+    keys.push(['Yesterday', new Date(currentDate)]); // clone
+    currentDate.setDate(currentDate.getDate() - ((currentDate.getDay() + 6) % 7));
+    keys.push(['This week', new Date(currentDate)]); // clone
+    currentDate.setDate(currentDate.getDate() - 7);
+    keys.push(['Last week', new Date(currentDate)]); // clone
+    currentDate.setDate(1);
+    keys.push(['This Month', new Date(currentDate)]); // clone
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    keys.push(['Last Month', new Date(currentDate)]); // clone
+    console.log("keys is ");
+    console.log(keys);
     this.state.reviews.forEach((review) => {
       const date = review.date.substring(0, 10).replace(/-/g, '\/');
       const reviewDate = new Date(date);
-      const reviewMonth = reviewDate.getMonth() + 1;
-      const reviewYear = reviewDate.getFullYear();
-      const reviewDayOfMonth = reviewDate.getDate();
-      // const reviewDayOfWeek = reviewDate.getDay();
-
-       // TODAY
-      if (currentDayofMonth === reviewDayOfMonth &&
-        currentMonth === reviewMonth &&
-        currentYear === reviewYear) {
-        if (!('Today' in reviewTypeList)) {
-          reviewTypeList.Today = [];
+      const [key] = keys.find(([key, date]) => reviewDate >= date) || [];
+      if (key && (!(key in reviewTypeList))) {
+        reviewTypeList[key] = [];
+      }
+      if (key) {
+        reviewTypeList[key].push(review);
+      } else {
+         // ALL OTHER MONTH / YEAR COMBINATIONS
+        if (!((`Month ${reviewDate.getMonth()}, ${reviewDate.getYear()}`) in reviewTypeList)) {
+          reviewTypeList[`Month ${reviewDate.getMonth()}, ${reviewDate.getFullYear()}`] = [];
         }
 
-        reviewTypeList.Today.push(review);
-        return;
+        reviewTypeList[`Month ${reviewDate.getMonth()}, ${reviewDate.getFullYear()}`].push(review);
       }
-
-      // YESTERDAY
-      if (currentDayofMonth === reviewDayOfMonth + 1
-         && currentMonth === reviewMonth &&
-         currentYear === reviewYear) {
-        if (!('Yesterday' in reviewTypeList)) {
-          reviewTypeList.Yesterday = [];
-        }
-
-        reviewTypeList.Yesterday.push(review);
-        return;
-      }
-
-       // THIS MONTH
-      if (currentMonth === reviewMonth && currentYear === reviewYear) {
-        if (!('This Month' in reviewTypeList)) {
-          reviewTypeList['This Month'] = [];
-        }
-
-        reviewTypeList['This Month'].push(review);
-        return;
-      }
-
-       // LAST MONTH
-      if (currentMonth === reviewMonth + 1 && currentYear === reviewYear) {
-        if (!('Last Month' in reviewTypeList)) {
-          reviewTypeList['Last Month'] = [];
-        }
-
-        reviewTypeList['Last Month'].push(review);
-        return;
-      }
-
-       // ALL OTHER MONTH / YEAR COMBINATIONS
-      if (!((`Month ${reviewMonth}, ${reviewYear}`) in reviewTypeList)) {
-        reviewTypeList[`Month ${reviewMonth}, ${reviewYear}`] = [];
-      }
-
-      reviewTypeList[`Month ${reviewMonth}, ${reviewYear}`].push(review);
     });
+
+    // const my_keys = Object.keys(reviewTypeList);
+    // let i = my_keys.length;
+    // const len = my_keys.length;
+    //
+    // my_keys.sort();
+    //
+    // console.log("sorted keys are ");
+    // console.log(my_keys);
+    // for (i = 0; i < len; i += 1) {
+    //   k = my_keys[i];
+    //   alert(k + ':' + myObj[k]);
+    // }
+
+    // console.log(reviewTypeList);
 
     this.setState({ reviewTypeList });
   }
