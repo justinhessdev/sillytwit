@@ -94,9 +94,9 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
     currentDate.setDate(currentDate.getDate() - 1);
     keys.push(['Yesterday/10005', new Date(currentDate)]); // clone
     currentDate.setDate(currentDate.getDate() - ((currentDate.getDay() + 6) % 7));
-    keys.push(['This week/10004', new Date(currentDate)]); // clone
+    keys.push(['This Week/10004', new Date(currentDate)]); // clone
     currentDate.setDate(currentDate.getDate() - 7);
-    keys.push(['Last week/10003', new Date(currentDate)]); // clone
+    keys.push(['Last Week/10003', new Date(currentDate)]); // clone
     currentDate.setDate(1);
     keys.push(['This Month/10002', new Date(currentDate)]); // clone
     currentDate.setMonth(currentDate.getMonth() - 1);

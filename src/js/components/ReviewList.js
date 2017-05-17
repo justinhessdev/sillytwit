@@ -20,16 +20,28 @@ export default function ReviewList(props) {
   return (
     <div style={divStyle} id="reviewList">
       {Object.keys(props.reviewTypeList)
-        .sort(function(a, b) {
-          if (b.split('/').map(Number)[1] === a.split('/').map(Number)[1]) {
-            return b.split('/').map(Number)[0] - a.split('/').map(Number)[0]
+        .sort((a, b) => {
+          const yearA = a.split('/').map(Number)[1];
+          const yearB = b.split('/').map(Number)[1];
+          const monthA = a.split('/').map(Number)[0];
+          const monthB = b.split('/').map(Number)[0];
+          if (yearB === yearA) {
+            return monthB - monthA;
           }
-          return b.split('/').map(Number)[1] - a.split('/').map(Number)[1]
+          return yearB - yearA;
         })
         .map((key) => {
+          let header;
+
+          if (key === 'Today/10006' || key === 'Yesterday/10005' || key === 'This Week/10004'
+        || key === 'Last Week/10003' || key === 'This Month/10002' || key === 'Last Month/10001') {
+            header = key.split('/')[0];
+          } else {
+            header = key;
+          }
           return (
             <div key={key}>
-              <h2 style={headerStyle}>{key}</h2>
+              <h2 style={headerStyle}>{header}</h2>
               <ul className="list-group">
                 {props.reviewTypeList[key].map((review) => {
                   const date = review.date.substring(0, 10);
