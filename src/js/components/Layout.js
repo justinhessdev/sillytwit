@@ -44,7 +44,7 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
             total: jsonData.total,
           });
 
-          self.sortReviews();
+          self.sectionReviews();
         });
     }
 
@@ -71,7 +71,7 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
             total: jsonData.total,
           });
 
-          self.sortReviews();
+          self.sectionReviews();
         });
       }
 
@@ -84,7 +84,7 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
     }, () => updateURLWithKeyword());
   }
 
-  sortReviews() {
+  sectionReviews() {
     const currentDate = new Date(); // Or leave out the argument for actual date
     currentDate.setHours(0, 0, 0, 0); // set to midnight
     // Prepare all related dates: yesterday and last Monday
@@ -156,7 +156,7 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
             total: jsonData.total,
           });
 
-          self.sortReviews();
+          self.sectionReviews();
         });
       }
 
@@ -187,7 +187,7 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
             total: jsonData.total,
           });
 
-          self.sortReviews();
+          self.sectionReviews();
         });
       }
 
