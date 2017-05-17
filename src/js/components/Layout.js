@@ -85,24 +85,22 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
   }
 
   sortReviews() {
-    const currentDate = new Date('2017/05/11'); // Or leave out the argument for actual date
+    const currentDate = new Date(); // Or leave out the argument for actual date
     currentDate.setHours(0, 0, 0, 0); // set to midnight
     // Prepare all related dates: yesterday and last Monday
     const keys = [];
     const reviewTypeList = {};
-    keys.push(['Today', new Date(currentDate)]); // clone
+    keys.push(['Today/10006', new Date(currentDate)]); // clone
     currentDate.setDate(currentDate.getDate() - 1);
-    keys.push(['Yesterday', new Date(currentDate)]); // clone
+    keys.push(['Yesterday/10005', new Date(currentDate)]); // clone
     currentDate.setDate(currentDate.getDate() - ((currentDate.getDay() + 6) % 7));
-    keys.push(['This week', new Date(currentDate)]); // clone
+    keys.push(['This week/10004', new Date(currentDate)]); // clone
     currentDate.setDate(currentDate.getDate() - 7);
-    keys.push(['Last week', new Date(currentDate)]); // clone
+    keys.push(['Last week/10003', new Date(currentDate)]); // clone
     currentDate.setDate(1);
-    keys.push(['This Month', new Date(currentDate)]); // clone
+    keys.push(['This Month/10002', new Date(currentDate)]); // clone
     currentDate.setMonth(currentDate.getMonth() - 1);
-    keys.push(['Last Month', new Date(currentDate)]); // clone
-    console.log("keys is ");
-    console.log(keys);
+    keys.push(['Last Month/10001', new Date(currentDate)]); // clone
     this.state.reviews.forEach((review) => {
       const date = review.date.substring(0, 10).replace(/-/g, '\/');
       const reviewDate = new Date(date);
@@ -114,28 +112,13 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
         reviewTypeList[key].push(review);
       } else {
          // ALL OTHER MONTH / YEAR COMBINATIONS
-        if (!((`Month ${reviewDate.getMonth()}, ${reviewDate.getYear()}`) in reviewTypeList)) {
-          reviewTypeList[`Month ${reviewDate.getMonth()}, ${reviewDate.getFullYear()}`] = [];
+        if (!((`${reviewDate.getMonth()}/${reviewDate.getYear()}`) in reviewTypeList)) {
+          reviewTypeList[`${reviewDate.getMonth()}/${reviewDate.getFullYear()}`] = [];
         }
 
-        reviewTypeList[`Month ${reviewDate.getMonth()}, ${reviewDate.getFullYear()}`].push(review);
+        reviewTypeList[`${reviewDate.getMonth()}/${reviewDate.getFullYear()}`].push(review);
       }
     });
-
-    // const my_keys = Object.keys(reviewTypeList);
-    // let i = my_keys.length;
-    // const len = my_keys.length;
-    //
-    // my_keys.sort();
-    //
-    // console.log("sorted keys are ");
-    // console.log(my_keys);
-    // for (i = 0; i < len; i += 1) {
-    //   k = my_keys[i];
-    //   alert(k + ':' + myObj[k]);
-    // }
-
-    // console.log(reviewTypeList);
 
     this.setState({ reviewTypeList });
   }
