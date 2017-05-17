@@ -37,7 +37,23 @@ export default function ReviewList(props) {
         || key === 'Last Week/10003' || key === 'This Month/10002' || key === 'Last Month/10001') {
             header = key.split('/')[0];
           } else {
-            header = key;
+            const monthObj = {
+              0: 'Jan',
+              1: 'Feb',
+              2: 'Mar',
+              3: 'Apr',
+              4: 'May',
+              5: 'June',
+              6: 'July',
+              7: 'Aug',
+              8: 'Sep',
+              9: 'Oct',
+              10: 'Nov',
+              11: 'Dec',
+            };
+            const month = key.split('/')[0];
+            const year = key.split('/')[1];
+            header = `${monthObj[month]}${year}`;
           }
           return (
             <div key={key}>
