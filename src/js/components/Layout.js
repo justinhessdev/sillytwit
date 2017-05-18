@@ -66,11 +66,14 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
 
       function loadMyReviews(data) {
         data.json().then((jsonData) => {
+          // console.log("Logging updated reviews by keyword: ")
+          // console.log(jsonData);
           self.setState({
             reviews: jsonData.reviews,
             total: jsonData.total,
           });
-
+          console.log("logging state after receiving keyword reviews: ");
+          console.log(self.state.reviews);
           self.sectionReviews();
         });
       }
@@ -104,7 +107,9 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
     this.state.reviews.forEach((review) => {
       const date = review.date.substring(0, 10).replace(/-/g, '\/');
       const reviewDate = new Date(date);
-      const [key] = keys.find(([key, date]) => reviewDate >= date) || [];
+      console.log("logging keys finding: ");
+      console.log(keys.find(([key, keyDate]) => reviewDate >= keyDate));
+      const [key] = keys.find(([key, keyDate]) => reviewDate >= keyDate) || [];
       if (key && (!(key in reviewTypeList))) {
         reviewTypeList[key] = [];
       }
@@ -112,8 +117,10 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
         reviewTypeList[key].push(review);
       } else {
          // ALL OTHER MONTH / YEAR COMBINATIONS
-        if (!((`${reviewDate.getMonth()}/${reviewDate.getYear()}`) in reviewTypeList)) {
+        if (!((`${reviewDate.getMonth()}/${reviewDate.getFullYear()}`) in reviewTypeList)) {
+          console.log("creating new key");
           reviewTypeList[`${reviewDate.getMonth()}/${reviewDate.getFullYear()}`] = [];
+          console.log(reviewTypeList);
         }
 
         reviewTypeList[`${reviewDate.getMonth()}/${reviewDate.getFullYear()}`].push(review);
@@ -151,6 +158,8 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
 
       function loadMyReviews(data) {
         data.json().then((jsonData) => {
+          console.log("Logging load more reviews: ")
+          console.log(jsonData);
           self.setState({
             reviews: self.state.reviews.concat(jsonData.reviews),
             total: jsonData.total,

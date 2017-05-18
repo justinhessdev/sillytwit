@@ -1,5 +1,5 @@
 const path = require('path');
-const webpack = require('webpack');
+// const webpack = require('webpack');
 // const Dotenv = require('dotenv-webpack');
 // const plugins = [];
 
@@ -21,11 +21,11 @@ module.exports = {
         },
       },
     ],
-    plugins: [
-      new webpack.DefinePlugin({
-        'process.env.REACT_APP_APPFIGURES_URL': JSON.stringify(process.env.REACT_APP_APPFIGURES_URL),
-      }),
-    ],
+    // plugins: [
+    //   new webpack.DefinePlugin({
+    //     'process.env.REACT_APP_APPFIGURES_URL': JSON.stringify(process.env.REACT_APP_APPFIGURES_URL),
+    //   }),
+    // ],
   },
 };
 // the plugins array does not do anything.. i define the URL in package.json script...
