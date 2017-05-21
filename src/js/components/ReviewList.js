@@ -1,34 +1,19 @@
 import React, { PropTypes } from 'react';
 
 export default function ReviewList(props) {
-  const headerStyle = {
-    fontWeight: 'bold',
-    textAlign: 'center',
-    background: '#dddddd',
-    border: '1px solid black',
-    padding: '10px',
-  };
-
-  const divStyle = {
-    marginLeft: '20px',
-    marginBottom: '20px',
-    marginTop: '20px',
-    height: '450px',
-    overflow: 'auto',
-  };
-
-  console.log('propTypes are: ');
-  console.log(ReviewList.propTypes);
-
   ReviewList.propTypes = {
     reviewTypeList: PropTypes.shape({
       'Today/10006': PropTypes.arrayOf(PropTypes.object),
       'Yesterday/10005': PropTypes.arrayOf(PropTypes.object),
+      'This Week/10004': PropTypes.arrayOf(PropTypes.object),
+      'Last Week/10003': PropTypes.arrayOf(PropTypes.object),
+      'This Month/10002': PropTypes.arrayOf(PropTypes.object),
+      'Last Month/10001': PropTypes.arrayOf(PropTypes.object),
     }).isRequired,
   };
 
   return (
-    <div style={divStyle} id="reviewList">
+    <div id="componentReviewList">
       {Object.keys(props.reviewTypeList)
         .sort((a, b) => {
           const yearA = a.split('/').map(Number)[1];
@@ -67,7 +52,7 @@ export default function ReviewList(props) {
           }
           return (
             <div key={key}>
-              <h2 style={headerStyle}>{header}</h2>
+              <h2 id="headerReviewList">{header}</h2>
               <ul className="list-group">
                 {props.reviewTypeList[key].map((review) => {
                   const date = review.date.substring(0, 10);

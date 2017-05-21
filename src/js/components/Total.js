@@ -1,14 +1,13 @@
-import React from "react"
+import React, { PropTypes } from 'react';
 
 export default function Total(props) {
-
-  const divStyle = {
-    marginLeft: '20px'
-  }
+  Total.propTypes = {
+    total: PropTypes.number.isRequired,
+  };
 
   return (
-    <div style={divStyle} id="componentTotal">
-      <label>Showing {props.total} Reviews</label>
+    <div id="componentTotal">
+      <h6>Showing {props.total} Reviews</h6>
     </div>
-  )
+  );
 }

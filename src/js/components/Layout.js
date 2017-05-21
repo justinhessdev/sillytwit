@@ -89,24 +89,23 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
   }
 
   sectionReviews() {
-    const currentDate = new Date(); // Or leave out the argument for actual date
+    const currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0); // set to midnight
-    // Prepare all related dates: yesterday and last Monday
+    // Prepare manual dates: today, yesterday, this week, last week...
     const keys = [];
     const reviewTypeList = {};
-    keys.push(['Today/10006', new Date(currentDate)]); // clone
-    // console.log(typeof(keys));
-    // console.log(keys);
+    // keys is an array of (size 2) arrays
+    keys.push(['Today/10006', new Date(currentDate)]);
     currentDate.setDate(currentDate.getDate() - 1);
-    keys.push(['Yesterday/10005', new Date(currentDate)]); // clone
+    keys.push(['Yesterday/10005', new Date(currentDate)]);
     currentDate.setDate(currentDate.getDate() - ((currentDate.getDay() + 6) % 7));
-    keys.push(['This Week/10004', new Date(currentDate)]); // clone
+    keys.push(['This Week/10004', new Date(currentDate)]);
     currentDate.setDate(currentDate.getDate() - 7);
-    keys.push(['Last Week/10003', new Date(currentDate)]); // clone
+    keys.push(['Last Week/10003', new Date(currentDate)]);
     currentDate.setDate(1);
-    keys.push(['This Month/10002', new Date(currentDate)]); // clone
+    keys.push(['This Month/10002', new Date(currentDate)]);
     currentDate.setMonth(currentDate.getMonth() - 1);
-    keys.push(['Last Month/10001', new Date(currentDate)]); // clone
+    keys.push(['Last Month/10001', new Date(currentDate)]);
     this.state.reviews.forEach((review) => {
       const date = review.date.substring(0, 10).replace(/-/g, '\/');
       const reviewDate = new Date(date);

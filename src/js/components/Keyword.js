@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 export default function Keyword(props) {
-  const divStyle = {
-    marginLeft: '20px',
+  Keyword.propTypes = {
+    onBlur: PropTypes.func.isRequired,
   };
 
   return (
-    <div style={divStyle} id="componentKeyword">
+    <div id="componentKeyword">
       <h6>Filter by keyword</h6>
       <label className="sr-only" htmlFor="inputKeyword">keyword</label>
       <input

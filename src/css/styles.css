@@ -17,3 +17,37 @@ h6 {
 .hide {
   display: none;
 }
+
+#componentTotal, #componentKeyword {
+  margin-left: 20px;
+}
+
+#componentLoadMore {
+  margin-left: 20px;
+  font-weight: bold;
+  text-align: center;
+  background-color: #dddddd;
+  border: 1px solid black;
+}
+
+#buttonLoadMore {
+  height: 50px;
+  width: 100%;
+  display: block;
+}
+
+#componentReviewList {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  height: 450px;
+  overflow: auto;
+}
+
+#headerReviewList {
+  font-weight: bold;
+  text-align: center;
+  background: #dddddd;
+  border: 1px solid black;
+  padding: 10px;
+}

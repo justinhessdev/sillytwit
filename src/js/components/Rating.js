@@ -1,6 +1,10 @@
-import React from "react";
+import React, { PropTypes } from 'react';
 
-export default function Rating(props){
+export default function Rating(props) {
+  Rating.propTypes = {
+    rating: PropTypes.string.isRequired,
+    handleRating: PropTypes.func.isRequired,
+  };
 
   return (
     <div id="componentRating">
