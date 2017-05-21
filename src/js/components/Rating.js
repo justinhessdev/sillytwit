@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
+import { PropRating, PropHandleRating } from '../MyPropTypes'
 
 export default function Rating(props) {
   Rating.propTypes = {
-    rating: PropTypes.string.isRequired,
-    handleRating: PropTypes.func.isRequired,
+    rating: PropRating.isRequired,
+    handleRating: PropHandleRating.isRequired,
   };
 
   return (

@@ -1,9 +1,9 @@
 import React from 'react';
-import { ReviewTypeList } from '../MyPropTypes';
+import { PropReviewTypeList } from '../MyPropTypes';
 
 export default function ReviewList(props) {
   ReviewList.propTypes = {
-    reviewTypeList: ReviewTypeList.isRequired,
+    reviewTypeList: PropReviewTypeList.isRequired,
   };
 
   return (
