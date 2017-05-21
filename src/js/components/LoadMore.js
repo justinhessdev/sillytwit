@@ -1,8 +1,9 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import { HandleLoadMore } from '../MyPropTypes';
 
 export default function LoadMore(props) {
   LoadMore.propTypes = {
-    handleLoadMore: PropTypes.func.isRequired,
+    handleLoadMore: HandleLoadMore.isRequired,
   };
 
   return (

@@ -1,8 +1,9 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import { OnBlur } from '../MyPropTypes';
 
 export default function Keyword(props) {
   Keyword.propTypes = {
-    onBlur: PropTypes.func.isRequired,
+    onBlur: OnBlur.isRequired,
   };
 
   return (

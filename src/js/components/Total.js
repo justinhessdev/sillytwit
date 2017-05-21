@@ -1,8 +1,9 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import { PropTotal } from '../MyPropTypes';
 
 export default function Total(props) {
   Total.propTypes = {
-    total: PropTypes.number.isRequired,
+    total: PropTotal.isRequired,
   };
 
   return (

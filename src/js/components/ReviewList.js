@@ -1,15 +1,9 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import { ReviewTypeList } from '../MyPropTypes';
 
 export default function ReviewList(props) {
   ReviewList.propTypes = {
-    reviewTypeList: PropTypes.shape({
-      'Today/10006': PropTypes.arrayOf(PropTypes.object),
-      'Yesterday/10005': PropTypes.arrayOf(PropTypes.object),
-      'This Week/10004': PropTypes.arrayOf(PropTypes.object),
-      'Last Week/10003': PropTypes.arrayOf(PropTypes.object),
-      'This Month/10002': PropTypes.arrayOf(PropTypes.object),
-      'Last Month/10001': PropTypes.arrayOf(PropTypes.object),
-    }).isRequired,
+    reviewTypeList: ReviewTypeList.isRequired,
   };
 
   return (
