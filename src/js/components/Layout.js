@@ -12,7 +12,7 @@ export default class Layout extends React.Component {
     super(props);
     this.state = {
       reviews: [],
-      reviewTypeList: [],
+      reviewTypeList: {},
       total: 0,
       pages: 1,
       url: process.env.REACT_APP_APPFIGURES_URL,
@@ -39,6 +39,7 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
     function loadMyReviews(data) {
       data.json()
         .then((jsonData) => {
+          console.log(jsonData.reviews);
           self.setState({
             reviews: self.state.reviews.concat(jsonData.reviews),
             total: jsonData.total,
@@ -72,8 +73,8 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
             reviews: jsonData.reviews,
             total: jsonData.total,
           });
-          console.log("logging state after receiving keyword reviews: ");
-          console.log(self.state.reviews);
+          // console.log("logging state after receiving keyword reviews: ");
+          // console.log(self.state.reviews);
           self.sectionReviews();
         });
       }
@@ -94,6 +95,8 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
     const keys = [];
     const reviewTypeList = {};
     keys.push(['Today/10006', new Date(currentDate)]); // clone
+    // console.log(typeof(keys));
+    // console.log(keys);
     currentDate.setDate(currentDate.getDate() - 1);
     keys.push(['Yesterday/10005', new Date(currentDate)]); // clone
     currentDate.setDate(currentDate.getDate() - ((currentDate.getDay() + 6) % 7));
@@ -107,27 +110,41 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
     this.state.reviews.forEach((review) => {
       const date = review.date.substring(0, 10).replace(/-/g, '\/');
       const reviewDate = new Date(date);
-      console.log("logging keys finding: ");
-      console.log(keys.find(([key, keyDate]) => reviewDate >= keyDate));
-      const [key] = keys.find(([key, keyDate]) => reviewDate >= keyDate) || [];
-      if (key && (!(key in reviewTypeList))) {
-        reviewTypeList[key] = [];
-      }
-      if (key) {
-        reviewTypeList[key].push(review);
-      } else {
-         // ALL OTHER MONTH / YEAR COMBINATIONS
-        if (!((`${reviewDate.getMonth()}/${reviewDate.getFullYear()}`) in reviewTypeList)) {
-          console.log("creating new key");
-          reviewTypeList[`${reviewDate.getMonth()}/${reviewDate.getFullYear()}`] = [];
-          console.log(reviewTypeList);
-        }
+      const [key, keyDate] = keys.find(([header, headerDate]) => reviewDate >= headerDate) || [];
+      const dynamicKey = `${reviewDate.getMonth()}/${reviewDate.getFullYear()}`;
 
-        reviewTypeList[`${reviewDate.getMonth()}/${reviewDate.getFullYear()}`].push(review);
+      // function push(myKey) {
+      //   reviewTypeList[myKey].push(review);
+      // }
+      //
+      // function createAndPush(myKey) {
+      //   reviewTypeList[myKey] = [];
+      //   push(myKey);
+      // }
+
+      /* Less readable ternary operator in 3 lines -- using the functions above */
+
+      // (key)
+      //   ? [(key in reviewTypeList) ? push(key) : createAndPush(key)]
+      //   : [(dynamicKey in reviewTypeList) ? push(dynamicKey) : createAndPush(dynamicKey)]
+
+      /* The More Readable version */
+
+      if (key) { // if key is not null we are using our manually made keys
+        if (!(key in reviewTypeList)) {
+          reviewTypeList[key] = [];
+        }
+        reviewTypeList[key].push(review);
+      } else { // if keys is null we are using our dynamicKeys
+        if (!(dynamicKey in reviewTypeList)) {
+          reviewTypeList[dynamicKey] = [];
+        }
+        reviewTypeList[dynamicKey].push(review);
       }
     });
 
     this.setState({ reviewTypeList });
+    console.log(reviewTypeList);
   }
 
   generateURL(host, pages, keyword, rating) {
@@ -227,7 +244,7 @@ Bootstrap design
         <div className="row">
           <div className="col-xs-10">
             <Total total={this.state.total} />
-            <ReviewList reviewTypeList={this.state.reviewTypeList} reviews={this.state.reviews} />
+            <ReviewList reviewTypeList={this.state.reviewTypeList} />
           </div>
         </div>
         <div className="row">

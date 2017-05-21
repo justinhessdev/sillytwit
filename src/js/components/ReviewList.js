@@ -1,4 +1,4 @@
-import React from "react"
+import React, { PropTypes } from 'react';
 
 export default function ReviewList(props) {
   const headerStyle = {
@@ -15,6 +15,16 @@ export default function ReviewList(props) {
     marginTop: '20px',
     height: '450px',
     overflow: 'auto',
+  };
+
+  console.log('propTypes are: ');
+  console.log(ReviewList.propTypes);
+
+  ReviewList.propTypes = {
+    reviewTypeList: PropTypes.shape({
+      'Today/10006': PropTypes.arrayOf(PropTypes.object),
+      'Yesterday/10005': PropTypes.arrayOf(PropTypes.object),
+    }).isRequired,
   };
 
   return (
