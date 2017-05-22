@@ -1,16 +1,12 @@
 import React from 'react';
 import { PropReviewTypeList } from '../MyPropTypes';
-import LoadingSpinner from './LoadingSpinner';
 
 export default function ReviewList(props) {
   ReviewList.propTypes = {
     reviewTypeList: PropReviewTypeList.isRequired,
   };
 
-  console.log("keys are: ");
-  console.log(Object.keys(props.reviewTypeList).length);
-
-  return (Object.keys(props.reviewTypeList).length) ? (
+  return (
     <div id="componentReviewList">
       {Object.keys(props.reviewTypeList)
         .sort((a, b) => {
@@ -72,5 +68,5 @@ export default function ReviewList(props) {
         })
       }
     </div>
-  ) : <LoadingSpinner />;
+  );
 }

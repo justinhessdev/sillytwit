@@ -5,6 +5,7 @@ import Rating from './Rating';
 import ReviewList from './ReviewList';
 import Total from './Total';
 import LoadMore from './LoadMore';
+import LoadingSpinner from './LoadingSpinner';
 
 export default class Layout extends React.Component {
 
@@ -230,7 +231,7 @@ Renders Keyword ad Rating components so far
 Bootstrap design
 */
   render() {
-    return (
+    return (Object.keys(this.state.reviewTypeList).length) ? (
       <div id="componentLayout">
         <div className="row">
           <div className="col-xs-8">
@@ -248,10 +249,10 @@ Bootstrap design
         </div>
         <div className="row">
           <div className="col-xs-10">
-            <LoadMore handleLoadMore={this.handleLoadMore} peach="fuzz" />
+            <LoadMore handleLoadMore={this.handleLoadMore} />
           </div>
         </div>
       </div>
-    );
+    ) : <LoadingSpinner />;
   }
 }
