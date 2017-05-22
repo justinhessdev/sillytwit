@@ -36,7 +36,6 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
   /* global fetch*/
   componentDidMount() {
     const self = this;
-
     function loadMyReviews(data) {
       data.json()
         .then((jsonData) => {

@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "dependencies": {
-    "dotenv-webpack": "^1.4.3",
+    "dotenv-webpack": "^1.4.5",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "webpack": "^1.12.9",
@@ -28,10 +28,6 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --content-base src --inline --hot",
-    "build-dev": "webpack-dev-server --content-base src --inline --hot --define process.env.NODE_ENV='\"dev\"' --define process.env.REACT_APP_APPFIGURES_URL='\"http://exercises.appfigures.com/reviews\"' --progress --colors",
-    "build-page2": "webpack-dev-server --content-base src --inline --hot --define process.env.NODE_ENV='\"dev\"' --define process.env.REACT_APP_APPFIGURES_URL='\"http://exercises.appfigures.com/reviews?page=2\"' --progress --colors",
-    "build-stars": "webpack-dev-server --content-base src --inline --hot --define process.env.NODE_ENV='\"dev\"' --define process.env.REACT_APP_APPFIGURES_URL='\"http://exercises.appfigures.com/reviews?stars=3\"' --progress --colors",
-    "build-example": "webpack-dev-server --content-base src --inline --hot --define process.env.NODE_ENV='\"dev\"' --define process.env.REACT_APP_APPFIGURES_URL='\"http://exercises.appfigures.com/reviews?stars=5&count=4&products=56556\"' --progress --colors",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
