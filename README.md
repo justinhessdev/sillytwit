@@ -8,10 +8,14 @@
 2. Install Dependencies: 
 
 		npm install
-
-3. Locate project in terminal and run:
 		
-		npm run build-dev
+3. Add .env file to root of project directory
+		
+		Ask nicely and I'll give you the secret URL to make the app work -- App will not run without these env variables
+
+4. Locate project in terminal and run:
+		
+		npm run dev
 		
 Now Sillytwit is up and running live on **localhost:8080**
 
@@ -23,13 +27,13 @@ ________________________
 
 The command 
 	
-	npm run build-dev
+	npm run dev
 	
 works with live reload by webpack dev server on **localhost:8080** because:	
 
 ##### In package.json we add the following script: 
 
-	"dev": "webpack-dev-server --content-base src --inline --hot ... ..."
+	"dev": "webpack-dev-server --content-base src --inline --hot"
 	
 ________________________
 
