@@ -208,7 +208,7 @@ Let's focus on this line:
 
 	<ReviewList reviewTypeList={this.state.reviewTypeList} />
 	
-We send props to our ReviewList component which contains the grouped reviews.
+We send props to ReviewList -- a functional component -- which contains the grouped reviews.
 
 `ReviewList.js`:
 
