@@ -1,4 +1,4 @@
-0 info it worked if it ends with ok
+0 info it worked if it ends with ok 
 1 verbose cli [ '/Users/jhess/.nvm/versions/node/v6.10.1/bin/node',
 1 verbose cli   '/Users/jhess/.nvm/versions/node/v6.10.1/bin/npm',
 1 verbose cli   'run',
