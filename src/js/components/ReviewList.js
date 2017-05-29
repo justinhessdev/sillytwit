@@ -1,14 +1,10 @@
 import React from 'react';
 import { PropReviewTypeList } from '../MyPropTypes';
 
-export default function ReviewList(props) {
-  ReviewList.propTypes = {
-    reviewTypeList: PropReviewTypeList.isRequired,
-  };
-
+const ReviewList = ({ reviewTypeList }) => {
   return (
     <div id="componentReviewList">
-      {Object.keys(props.reviewTypeList)
+      {Object.keys(reviewTypeList)
         .sort((a, b) => {
           const yearA = a.split('/').map(Number)[1];
           const yearB = b.split('/').map(Number)[1];
@@ -48,7 +44,7 @@ export default function ReviewList(props) {
             <div key={key}>
               <h2 id="headerReviewList">{header}</h2>
               <ul className="list-group">
-                {props.reviewTypeList[key].map((review) => {
+                {reviewTypeList[key].map((review) => {
                   const date = review.date.substring(0, 10);
                   const time = review.date.slice(12);
                   return (
@@ -70,3 +66,9 @@ export default function ReviewList(props) {
     </div>
   );
 }
+
+ReviewList.propTypes = {
+  reviewTypeList: PropReviewTypeList.isRequired,
+};
+
+export default ReviewList;

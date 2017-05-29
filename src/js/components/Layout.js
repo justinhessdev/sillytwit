@@ -39,7 +39,7 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
     function loadMyReviews(data) {
       data.json()
         .then((jsonData) => {
-          console.log(jsonData.reviews);
+          // console.log(jsonData.reviews);
           self.setState({
             reviews: self.state.reviews.concat(jsonData.reviews),
             total: jsonData.total,
@@ -143,7 +143,7 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
     });
 
     this.setState({ reviewTypeList });
-    console.log(reviewTypeList);
+    // console.log(reviewTypeList);
   }
 
   generateURL(host, pages, keyword, rating) {
