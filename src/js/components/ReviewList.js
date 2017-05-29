@@ -1,50 +1,51 @@
 import React from 'react';
 import { PropReviewTypeList } from '../MyPropTypes';
 
-const ReviewList = ({ reviewTypeList }) => {
-  return (
-    <div id="componentReviewList">
-      {Object.keys(reviewTypeList)
-        .sort((a, b) => {
-          const yearA = a.split('/').map(Number)[1];
-          const yearB = b.split('/').map(Number)[1];
-          const monthA = a.split('/').map(Number)[0];
-          const monthB = b.split('/').map(Number)[0];
-          if (yearB === yearA) {
-            return monthB - monthA;
-          }
-          return yearB - yearA;
-        })
-        .map((key) => {
-          let header;
+const ReviewList = ({ reviewTypeList }) => (
+  <div id="componentReviewList">
+    {
+      Object.keys(reviewTypeList)
+      .sort((a, b) => {
+        const yearA = a.split('/').map(Number)[1];
+        const yearB = b.split('/').map(Number)[1];
+        const monthA = a.split('/').map(Number)[0];
+        const monthB = b.split('/').map(Number)[0];
+        if (yearB === yearA) {
+          return monthB - monthA;
+        }
+        return yearB - yearA;
+      })
+      .map((key) => {
+        let header;
 
-          if (key === 'Today/10006' || key === 'Yesterday/10005' || key === 'This Week/10004'
-        || key === 'Last Week/10003' || key === 'This Month/10002' || key === 'Last Month/10001') {
-            header = key.split('/')[0];
-          } else {
-            const monthObj = {
-              0: 'Jan',
-              1: 'Feb',
-              2: 'Mar',
-              3: 'Apr',
-              4: 'May',
-              5: 'June',
-              6: 'July',
-              7: 'Aug',
-              8: 'Sep',
-              9: 'Oct',
-              10: 'Nov',
-              11: 'Dec',
-            };
-            const month = key.split('/')[0];
-            const year = key.split('/')[1];
-            header = `${monthObj[month]}${year}`;
-          }
-          return (
-            <div key={key}>
-              <h2 id="headerReviewList">{header}</h2>
-              <ul className="list-group">
-                {reviewTypeList[key].map((review) => {
+        if (key === 'Today/10006' || key === 'Yesterday/10005' || key === 'This Week/10004'
+      || key === 'Last Week/10003' || key === 'This Month/10002' || key === 'Last Month/10001') {
+          header = key.split('/')[0];
+        } else {
+          const monthObj = {
+            0: 'Jan',
+            1: 'Feb',
+            2: 'Mar',
+            3: 'Apr',
+            4: 'May',
+            5: 'June',
+            6: 'July',
+            7: 'Aug',
+            8: 'Sep',
+            9: 'Oct',
+            10: 'Nov',
+            11: 'Dec',
+          };
+          const month = key.split('/')[0];
+          const year = key.split('/')[1];
+          header = `${monthObj[month]}${year}`;
+        }
+        return (
+          <div key={key}>
+            <h2 id="headerReviewList">{header}</h2>
+            <ul className="list-group">
+              {
+                reviewTypeList[key].map((review) => {
                   const date = review.date.substring(0, 10);
                   const time = review.date.slice(12);
                   return (
@@ -57,15 +58,15 @@ const ReviewList = ({ reviewTypeList }) => {
                       <span className="bold">Rating:</span> {review.stars} <br></br>
                     </li>
                   );
-                })}
-              </ul>
-            </div>
-          );
-        })
-      }
-    </div>
+                })
+              }
+            </ul>
+          </div>
+        );
+      })
+    }
+  </div>
   );
-}
 
 ReviewList.propTypes = {
   reviewTypeList: PropReviewTypeList.isRequired,
