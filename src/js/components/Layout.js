@@ -143,7 +143,7 @@ process.env.REACT_APP_APPFIGURES_URL --- hiding the url
     });
 
     this.setState({ reviewTypeList });
-    // console.log(reviewTypeList);
+    console.log(reviewTypeList);
   }
 
   generateURL(host, pages, keyword, rating) {
