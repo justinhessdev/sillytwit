@@ -30,7 +30,7 @@ const Container = (props) => (
   <div>
     {
       React.Children.map(props.children, (child, i) => {
-        if (i > 1) return
+        if (i > 2) return
         return child;
       })
     }
